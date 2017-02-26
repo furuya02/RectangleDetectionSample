@@ -1,0 +1,405 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B67B54E40BF2B1589C20CF8 /* Pods_RectangleDetectionSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0A896AC6F5F610F0AAE1231 /* Pods_RectangleDetectionSample.framework */; };
+		D7247AE01E6280880097A34C /* 001.png in Resources */ = {isa = PBXBuildFile; fileRef = D7247ADF1E6280880097A34C /* 001.png */; };
+		D726C1CB1E5AC7260063D81E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726C1CA1E5AC7260063D81E /* AppDelegate.swift */; };
+		D726C1CD1E5AC7260063D81E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726C1CC1E5AC7260063D81E /* ViewController.swift */; };
+		D726C1D01E5AC7260063D81E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D726C1CE1E5AC7260063D81E /* Main.storyboard */; };
+		D726C1D21E5AC7260063D81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D726C1D11E5AC7260063D81E /* Assets.xcassets */; };
+		D726C1D51E5AC7260063D81E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D726C1D31E5AC7260063D81E /* LaunchScreen.storyboard */; };
+		D726C1DD1E5AC85D0063D81E /* AvCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726C1DC1E5AC85D0063D81E /* AvCapture.swift */; };
+		D726C1E01E5AC8B10063D81E /* OpenCv.mm in Sources */ = {isa = PBXBuildFile; fileRef = D726C1DF1E5AC8B10063D81E /* OpenCv.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		42442ECFAD0133E4906BE734 /* Pods-RectangleDetectionSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RectangleDetectionSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-RectangleDetectionSample/Pods-RectangleDetectionSample.release.xcconfig"; sourceTree = "<group>"; };
+		5315636BB4D720FA8DDEA04C /* Pods-RectangleDetectionSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RectangleDetectionSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RectangleDetectionSample/Pods-RectangleDetectionSample.debug.xcconfig"; sourceTree = "<group>"; };
+		D7247ADF1E6280880097A34C /* 001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 001.png; sourceTree = "<group>"; };
+		D726C1C71E5AC7260063D81E /* RectangleDetectionSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RectangleDetectionSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D726C1CA1E5AC7260063D81E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D726C1CC1E5AC7260063D81E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D726C1CF1E5AC7260063D81E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D726C1D11E5AC7260063D81E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D726C1D41E5AC7260063D81E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D726C1D61E5AC7260063D81E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D726C1DC1E5AC85D0063D81E /* AvCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvCapture.swift; sourceTree = "<group>"; };
+		D726C1DE1E5AC8B10063D81E /* RectangleDetectionSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RectangleDetectionSample-Bridging-Header.h"; sourceTree = "<group>"; };
+		D726C1DF1E5AC8B10063D81E /* OpenCv.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCv.mm; sourceTree = "<group>"; };
+		E0A896AC6F5F610F0AAE1231 /* Pods_RectangleDetectionSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RectangleDetectionSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D726C1C41E5AC7260063D81E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B67B54E40BF2B1589C20CF8 /* Pods_RectangleDetectionSample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		655E911225D9E6518A40F0AB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5315636BB4D720FA8DDEA04C /* Pods-RectangleDetectionSample.debug.xcconfig */,
+				42442ECFAD0133E4906BE734 /* Pods-RectangleDetectionSample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8669C44806685154B6C2980E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E0A896AC6F5F610F0AAE1231 /* Pods_RectangleDetectionSample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D726C1BE1E5AC7260063D81E = {
+			isa = PBXGroup;
+			children = (
+				D726C1C91E5AC7260063D81E /* RectangleDetectionSample */,
+				D726C1C81E5AC7260063D81E /* Products */,
+				655E911225D9E6518A40F0AB /* Pods */,
+				8669C44806685154B6C2980E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D726C1C81E5AC7260063D81E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D726C1C71E5AC7260063D81E /* RectangleDetectionSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D726C1C91E5AC7260063D81E /* RectangleDetectionSample */ = {
+			isa = PBXGroup;
+			children = (
+				D7247ADF1E6280880097A34C /* 001.png */,
+				D726C1DC1E5AC85D0063D81E /* AvCapture.swift */,
+				D726C1CA1E5AC7260063D81E /* AppDelegate.swift */,
+				D726C1CC1E5AC7260063D81E /* ViewController.swift */,
+				D726C1CE1E5AC7260063D81E /* Main.storyboard */,
+				D726C1D11E5AC7260063D81E /* Assets.xcassets */,
+				D726C1D31E5AC7260063D81E /* LaunchScreen.storyboard */,
+				D726C1D61E5AC7260063D81E /* Info.plist */,
+				D726C1DF1E5AC8B10063D81E /* OpenCv.mm */,
+				D726C1DE1E5AC8B10063D81E /* RectangleDetectionSample-Bridging-Header.h */,
+			);
+			path = RectangleDetectionSample;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D726C1C61E5AC7260063D81E /* RectangleDetectionSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D726C1D91E5AC7260063D81E /* Build configuration list for PBXNativeTarget "RectangleDetectionSample" */;
+			buildPhases = (
+				14CF1FB0D9A16C3C033D54DD /* [CP] Check Pods Manifest.lock */,
+				D726C1C31E5AC7260063D81E /* Sources */,
+				D726C1C41E5AC7260063D81E /* Frameworks */,
+				D726C1C51E5AC7260063D81E /* Resources */,
+				AFECFFAD33FC264D551B183B /* [CP] Embed Pods Frameworks */,
+				7D324A1EBBC28A77436CC599 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RectangleDetectionSample;
+			productName = RectangleDetectionSample;
+			productReference = D726C1C71E5AC7260063D81E /* RectangleDetectionSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D726C1BF1E5AC7260063D81E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = SAPPOROWORKS;
+				TargetAttributes = {
+					D726C1C61E5AC7260063D81E = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = T32GQ84AVX;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = D726C1C21E5AC7260063D81E /* Build configuration list for PBXProject "RectangleDetectionSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D726C1BE1E5AC7260063D81E;
+			productRefGroup = D726C1C81E5AC7260063D81E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D726C1C61E5AC7260063D81E /* RectangleDetectionSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D726C1C51E5AC7260063D81E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D726C1D51E5AC7260063D81E /* LaunchScreen.storyboard in Resources */,
+				D726C1D21E5AC7260063D81E /* Assets.xcassets in Resources */,
+				D726C1D01E5AC7260063D81E /* Main.storyboard in Resources */,
+				D7247AE01E6280880097A34C /* 001.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14CF1FB0D9A16C3C033D54DD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7D324A1EBBC28A77436CC599 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RectangleDetectionSample/Pods-RectangleDetectionSample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFECFFAD33FC264D551B183B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RectangleDetectionSample/Pods-RectangleDetectionSample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D726C1C31E5AC7260063D81E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D726C1CD1E5AC7260063D81E /* ViewController.swift in Sources */,
+				D726C1DD1E5AC85D0063D81E /* AvCapture.swift in Sources */,
+				D726C1E01E5AC8B10063D81E /* OpenCv.mm in Sources */,
+				D726C1CB1E5AC7260063D81E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D726C1CE1E5AC7260063D81E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D726C1CF1E5AC7260063D81E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D726C1D31E5AC7260063D81E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D726C1D41E5AC7260063D81E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D726C1D71E5AC7260063D81E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D726C1D81E5AC7260063D81E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D726C1DA1E5AC7260063D81E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5315636BB4D720FA8DDEA04C /* Pods-RectangleDetectionSample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = T32GQ84AVX;
+				INFOPLIST_FILE = RectangleDetectionSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ne.sapporoworks.RectangleDetectionSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RectangleDetectionSample/RectangleDetectionSample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D726C1DB1E5AC7260063D81E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42442ECFAD0133E4906BE734 /* Pods-RectangleDetectionSample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = T32GQ84AVX;
+				INFOPLIST_FILE = RectangleDetectionSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ne.sapporoworks.RectangleDetectionSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RectangleDetectionSample/RectangleDetectionSample-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D726C1C21E5AC7260063D81E /* Build configuration list for PBXProject "RectangleDetectionSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D726C1D71E5AC7260063D81E /* Debug */,
+				D726C1D81E5AC7260063D81E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D726C1D91E5AC7260063D81E /* Build configuration list for PBXNativeTarget "RectangleDetectionSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D726C1DA1E5AC7260063D81E /* Debug */,
+				D726C1DB1E5AC7260063D81E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D726C1BF1E5AC7260063D81E /* Project object */;
+}

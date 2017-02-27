@@ -133,21 +133,26 @@ std::vector<std::vector<cv::Point> > contours;
 
     // 2値化
     cv::cvtColor(mat,gray,CV_BGR2GRAY);
-    cv::threshold(gray,gray, 0, 255, cv::THRESH_BINARY|cv::THRESH_OTSU);
+    //家の机だとこれでOKだった
+    //cv::threshold(gray,gray, 0, 255, cv::THRESH_BINARY|cv::THRESH_OTSU);
+    // 職場がどこちら（200のところは、180以上ぐらいでOKだった）
+    cv::threshold(gray, gray, 200, 255, CV_THRESH_TOZERO_INV );
+    cv::bitwise_not(gray, gray);
+    cv::threshold(gray, gray, 0, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
     
     // 2値画像，輪郭（出力），階層構造（出力），輪郭抽出モード，輪郭の近似手法
     std::vector<std::vector<cv::Point> > tmpContours;
     std::vector<cv::Vec4i> hierarchy;
-    // どちらでも、あまり変わりない
-    //cv::findContours(gray, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_TC89_KCOS);
-    cv::findContours(gray, tmpContours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_TC89_L1);
-    //    mode –
+    //findContoursをかけるとデータが壊れるので、テンポラリで作業する
+    cv::Mat tmpGray = gray.clone(); // 輪郭検出用
+    // 下のほうが取れている感じ
+    //cv::findContours(tmpGray, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_TC89_KCOS);
+    cv::findContours(tmpGray, tmpContours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_TC89_L1);
     //    輪郭抽出モード
     //    RETR_EXTERNAL 最も外側の輪郭のみを抽出します．すべての輪郭に対して hierarchy[i][2]=hierarchy[i][3]=-1 がセットされます
     //    RETR_LIST すべての輪郭を抽出しますが，一切の階層構造を保持しません
     //    RETR_CCOMP 全ての輪郭を抽出し，それらを2階層構造として保存します：上のレベルには，連結成分の外側の境界線が，下のレベルには，連結成分の内側に存在する穴の境界線が属します．ある連結成分の穴の内側に別の輪郭が存在する場合，その穴は上のレベルに属します
     //    RETR_TREE 全ての輪郭を抽出し，入れ子構造になった輪郭を完全に表現する階層構造を構成します．この完全な階層構造は，OpenCVの contours.c デモで見ることができます
-    //    method –
     //    輪郭の近似手法：
     //    CV_CHAIN_APPROX_NONE すべての輪郭点を完全に格納します．つまり，この手法により格納された任意の隣り合う2点は，互いに8近傍に存在します
     //    CV_CHAIN_APPROX_SIMPLE 水平・垂直・斜めの線分を圧縮し，それらの端点のみを残します．例えば，まっすぐな矩形の輪郭線は，4つの点にエンコードされます
@@ -173,9 +178,12 @@ std::vector<std::vector<cv::Point> > contours;
     /// 輪郭の描画  画像，輪郭，描画輪郭指定インデックス，色，太さ，種類，階層構造，描画輪郭の最大レベル
     int max_level = 0;
     for(int i = 0; i < contours.size() ; i++){
+        // 白黒では見えないので、matだけ
         cv::drawContours(mat, contours, i, cv::Scalar(255, 0, 0, 255), 1, CV_AA, hierarchy, max_level);
     }
+    // どちらをモニターするかで変更する
     return MatToUIImage(mat);
+    //return MatToUIImage(gray);
 }
 
 

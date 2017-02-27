@@ -23,7 +23,7 @@ class ViewController: UIViewController, AVCaptureDelegate {
         for n in 0 ..< 4 {
             let view = UIView()
             view.layer.borderColor = UIColor.cyan.cgColor
-            view.layer.borderWidth = 1
+            view.layer.borderWidth = 3
             view.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0)
             view.isHidden = true
             imageView.addSubview(view)

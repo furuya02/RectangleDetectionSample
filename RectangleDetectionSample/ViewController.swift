@@ -102,33 +102,16 @@ class ViewController: UIViewController, AVCaptureDelegate {
     }
     
     @IBAction func tapButton(_ sender: Any) {
-        isPreviewing = true
-        performSegue(withIdentifier: "gotoPreviewView", sender: nil)
     }
 
     @IBAction func returnPreview(segue: UIStoryboardSegue) {
         isPreviewing = false
     }
     
-    @IBAction func tapShutterButton(_ sender: Any) {
-        
-//        isChecking = true
-//        let alert: UIAlertController = UIAlertController(title: "撮影完了", message: "保存しますか？", preferredStyle:  UIAlertControllerStyle.alert)
-//        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
-//            (action: UIAlertAction!) -> Void in
-//            //let resize = self.resizeImage(image: self.imageView.image!, width: Int(UIScreen.main.bounds.width), height: Int(UIScreen.main.bounds.height) * 2)
-//            UIImageWriteToSavedPhotosAlbum(self.imageView.image!, self, nil, nil)
-//            self.isChecking = false
-//        })
-//        alert.addAction(UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.cancel, handler:{
-//            (action: UIAlertAction!) -> Void in
-//            self.isChecking = false
-//        }))
-//        alert.addAction(defaultAction)
-//        present(alert, animated: true, completion: nil)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        isPreviewing = true
+        performSegue(withIdentifier: "gotoPreviewView", sender: nil)
     }
-    
-
 
 }
 

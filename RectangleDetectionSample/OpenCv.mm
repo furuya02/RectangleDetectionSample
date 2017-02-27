@@ -134,11 +134,11 @@ std::vector<std::vector<cv::Point> > contours;
     // 2値化
     cv::cvtColor(mat,gray,CV_BGR2GRAY);
     //家の机だとこれでOKだった
-    //cv::threshold(gray,gray, 0, 255, cv::THRESH_BINARY|cv::THRESH_OTSU);
+    cv::threshold(gray,gray, 0, 255, cv::THRESH_BINARY|cv::THRESH_OTSU);
     // 職場がどこちら（200のところは、180以上ぐらいでOKだった）
-    cv::threshold(gray, gray, 200, 255, CV_THRESH_TOZERO_INV );
-    cv::bitwise_not(gray, gray);
-    cv::threshold(gray, gray, 0, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
+//    cv::threshold(gray, gray, 200, 255, CV_THRESH_TOZERO_INV );
+//    cv::bitwise_not(gray, gray);
+//    cv::threshold(gray, gray, 0, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
     
     // 2値画像，輪郭（出力），階層構造（出力），輪郭抽出モード，輪郭の近似手法
     std::vector<std::vector<cv::Point> > tmpContours;

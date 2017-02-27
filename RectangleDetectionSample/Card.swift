@@ -22,7 +22,7 @@ class Card: NSObject {
     //      points[2]    points[3]
     
     
-    init(p1: CGPoint, p2: CGPoint, p3: CGPoint, p4: CGPoint){
+    init(p1: CGPoint, p2: CGPoint, p3: CGPoint, p4: CGPoint, raito: CGFloat){
         //points = [p1, p2, p3, p4].sorted { $0.x < $1.x }
         let arr = [p1, p2, p3, p4]
         
@@ -39,5 +39,12 @@ class Card: NSObject {
         // 先頭の２要素を取り出して、xでソートする（左側を先に取り出す）
         points.append(contentsOf: uppers.enumerated().filter({$0.offset < 2}).map{ $0.element }.sorted(by: {$0.x < $1.x}))
         points.append(contentsOf: unders.enumerated().filter({$0.offset < 2}).map{ $0.element }.sorted(by: {$0.x < $1.x}))
+        
+        // 縮尺に合わせる
+        
+        print("raito=\(raito)")
+        print(rect)
+        rect = CGRect(x: rect.origin.x * raito, y: rect.origin.y * raito, width: rect.width * raito, height: rect.height * raito)
+        print(rect)
     }
 }

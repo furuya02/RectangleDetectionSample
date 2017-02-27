@@ -35,11 +35,11 @@ class ViewController: UIViewController, AVCaptureDelegate {
     }
 
     // [Card]の初期化
-    func reinitializeCard() {
+    func reinitializeCard(raito: CGFloat) {
         cards = []
         for rect in openCv.rects {
             let points = rect as! NSArray
-            let card = Card(p1: points[0] as! CGPoint ,p2: points[1] as! CGPoint, p3: points[2] as! CGPoint, p4: points[3] as! CGPoint)
+            let card = Card(p1: points[0] as! CGPoint ,p2: points[1] as! CGPoint, p3: points[2] as! CGPoint, p4: points[3] as! CGPoint, raito: raito)
             cards.append(card)
         }
         print("cards.count = \(cards.count)")
@@ -49,18 +49,35 @@ class ViewController: UIViewController, AVCaptureDelegate {
         let img = openCv.searchLine(image)
         imageView.image = img! as UIImage;
 
-        reinitializeCard()
+        
+        // 縦横比から、縦横のどちらが基準になっているかを確認する
+        print("image width=\(imageView.image?.size.width) height=\(imageView.image?.size.height)")
+        let ratioImage = (imageView.image?.size.height)! / (imageView.image?.size.width)!
+        print("imageView.width=\(imageView.bounds.size.width) height=\(imageView.bounds.size.height)")
+        let viewRaito = (imageView.bounds.size.height) / (imageView.bounds.size.width)
+        
+        
+        
+        var isHorizontalReference = true // 横基準
+        if ratioImage < viewRaito { // 縦基準の場合
+            isHorizontalReference = false
+        }
+        var offsetX:CGFloat = 0, offsetY:CGFloat = 0
+        var raito = imageView.bounds.width / (imageView.image?.size.width)!
+        if !isHorizontalReference {
+            raito = imageView.bounds.height / (imageView.image?.size.height)!
+            offsetX = ((imageView.image?.size.width)!  * raito - imageView.bounds.width) / 2
+        } else {
+            offsetY = ((imageView.image?.size.height)! * raito - imageView.bounds.height) / 2
+        }
+        
+        reinitializeCard(raito: raito)
         if cards.count > 0 {
             // 縮小イメージ
 //            let srcImageRef = img?.cgImage
 //            var imageRef = srcImageRef?.cropping(to: cards[0].rect)
 //            let trimmedImage = UIImage(cgImage: imageRef!)
 //            imageView.image = trimmedImage
-            
-            let offsetX = (imageView.image?.size.width)! - imageView.bounds.width
-            let offsetY = (imageView.image?.size.height)! - imageView.bounds.height
-            print("X=\(offsetX) Y=\(offsetY)")
-            print("\(cards[0].points[0].x),\(cards[0].points[0].y) - \(cards[0].points[3].x),\(cards[0].points[3].y)")
 
             // ガイドビュー
             for guideView in guideViews {
@@ -68,9 +85,9 @@ class ViewController: UIViewController, AVCaptureDelegate {
             }
             for (i,card) in cards.enumerated() {
                 guideViews[i].isHidden = false
-                
                 let r = card.rect
-                guideViews[i].frame = CGRect(x: (r?.origin.x)! - offsetX/2, y: (r?.origin.y)! - offsetY/2, width: (r?.size.width)!, height: (r?.size.height)!)
+                guideViews[i].frame = CGRect(x: (r?.origin.x)! - offsetX, y: (r?.origin.y)! - offsetY , width: (r?.size.width)!, height: (r?.size.height)!)
+                print("y=\((r?.origin.y)!) OffsetY=\(offsetY)")
             }
         } else {
             for guideView in guideViews {

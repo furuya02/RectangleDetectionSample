@@ -18,17 +18,16 @@ class AVCapture:NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     var captureSession: AVCaptureSession!
     var delegate: AVCaptureDelegate?
 
-    var counter = 0 //更に処理を少なくする
-    
+    var count=0
     override init(){
         super.init()
         
         captureSession = AVCaptureSession()
         
         // 解像度
-        captureSession.sessionPreset = AVCaptureSessionPreset640x480
+        captureSession.sessionPreset = //AVCaptureSessionPreset640x480
         //AVCaptureSessionPresetMedium
-        //AVCaptureSessionPreset1920x1080 1/5
+        AVCaptureSessionPreset1920x1080 //1/5
         //AVCaptureSessionPreset1280x720 1/5
         //AVCaptureSessionPreset640x480
         //AVCaptureSessionPresetLow
@@ -56,11 +55,11 @@ class AVCapture:NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     // 新しいキャプチャの追加で呼ばれる(1/30秒に１回)
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
-        if (counter % 5) == 0 {
+        if count % 5 == 0 {
             let image = imageFromSampleBuffer(sampleBuffer: sampleBuffer)
             delegate?.capture(image: image)
         }
-        counter += 1
+        count += 1
     }
     
     func imageFromSampleBuffer(sampleBuffer :CMSampleBuffer) -> UIImage {

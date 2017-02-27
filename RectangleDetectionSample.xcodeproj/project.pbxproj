@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B67B54E40BF2B1589C20CF8 /* Pods_RectangleDetectionSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0A896AC6F5F610F0AAE1231 /* Pods_RectangleDetectionSample.framework */; };
-		D7247AE01E6280880097A34C /* 001.png in Resources */ = {isa = PBXBuildFile; fileRef = D7247ADF1E6280880097A34C /* 001.png */; };
 		D726C1CB1E5AC7260063D81E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726C1CA1E5AC7260063D81E /* AppDelegate.swift */; };
 		D726C1CD1E5AC7260063D81E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726C1CC1E5AC7260063D81E /* ViewController.swift */; };
 		D726C1D01E5AC7260063D81E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D726C1CE1E5AC7260063D81E /* Main.storyboard */; };
@@ -17,12 +16,12 @@
 		D726C1DD1E5AC85D0063D81E /* AvCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726C1DC1E5AC85D0063D81E /* AvCapture.swift */; };
 		D726C1E01E5AC8B10063D81E /* OpenCv.mm in Sources */ = {isa = PBXBuildFile; fileRef = D726C1DF1E5AC8B10063D81E /* OpenCv.mm */; };
 		D76C1D641E62B470000DC913 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C1D631E62B470000DC913 /* Card.swift */; };
+		D7A139F91E64070900138BEF /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A139F81E64070900138BEF /* PreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		42442ECFAD0133E4906BE734 /* Pods-RectangleDetectionSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RectangleDetectionSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-RectangleDetectionSample/Pods-RectangleDetectionSample.release.xcconfig"; sourceTree = "<group>"; };
 		5315636BB4D720FA8DDEA04C /* Pods-RectangleDetectionSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RectangleDetectionSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RectangleDetectionSample/Pods-RectangleDetectionSample.debug.xcconfig"; sourceTree = "<group>"; };
-		D7247ADF1E6280880097A34C /* 001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 001.png; sourceTree = "<group>"; };
 		D726C1C71E5AC7260063D81E /* RectangleDetectionSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RectangleDetectionSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D726C1CA1E5AC7260063D81E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D726C1CC1E5AC7260063D81E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +33,7 @@
 		D726C1DE1E5AC8B10063D81E /* RectangleDetectionSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RectangleDetectionSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		D726C1DF1E5AC8B10063D81E /* OpenCv.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCv.mm; sourceTree = "<group>"; };
 		D76C1D631E62B470000DC913 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		D7A139F81E64070900138BEF /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		E0A896AC6F5F610F0AAE1231 /* Pods_RectangleDetectionSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RectangleDetectionSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -87,7 +87,6 @@
 		D726C1C91E5AC7260063D81E /* RectangleDetectionSample */ = {
 			isa = PBXGroup;
 			children = (
-				D7247ADF1E6280880097A34C /* 001.png */,
 				D726C1DC1E5AC85D0063D81E /* AvCapture.swift */,
 				D726C1CA1E5AC7260063D81E /* AppDelegate.swift */,
 				D726C1CC1E5AC7260063D81E /* ViewController.swift */,
@@ -98,6 +97,7 @@
 				D726C1DF1E5AC8B10063D81E /* OpenCv.mm */,
 				D726C1DE1E5AC8B10063D81E /* RectangleDetectionSample-Bridging-Header.h */,
 				D76C1D631E62B470000DC913 /* Card.swift */,
+				D7A139F81E64070900138BEF /* PreviewViewController.swift */,
 			);
 			path = RectangleDetectionSample;
 			sourceTree = "<group>";
@@ -169,7 +169,6 @@
 				D726C1D51E5AC7260063D81E /* LaunchScreen.storyboard in Resources */,
 				D726C1D21E5AC7260063D81E /* Assets.xcassets in Resources */,
 				D726C1D01E5AC7260063D81E /* Main.storyboard in Resources */,
-				D7247AE01E6280880097A34C /* 001.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +232,7 @@
 				D76C1D641E62B470000DC913 /* Card.swift in Sources */,
 				D726C1E01E5AC8B10063D81E /* OpenCv.mm in Sources */,
 				D726C1CB1E5AC7260063D81E /* AppDelegate.swift in Sources */,
+				D7A139F91E64070900138BEF /* PreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -341,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

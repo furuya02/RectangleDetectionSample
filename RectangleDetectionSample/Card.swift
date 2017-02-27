@@ -10,8 +10,8 @@ import Foundation
 
 
 class Card: NSObject {
-    
-    var rect: CGRect! // 概説の矩形
+    var scaleRect: CGRect! // 概説の矩形
+    var orgRect: CGRect! // 概説の矩形
     var points: [CGPoint]! // 四隅の位置
 
     //      points[0]    points[1]
@@ -31,7 +31,7 @@ class Card: NSObject {
         
         let height = max(arr[0].y, arr[1].y, arr[2].y, arr[3].y) - y
         let width = max(arr[0].x, arr[1].x, arr[2].x, arr[3].x) - x
-        rect = CGRect(x: x, y: y, width: width, height: height)
+        orgRect = CGRect(x: x, y: y, width: width, height: height)
         
         points = []
         let uppers = arr.sorted(by: {$0.y < $1.y}) // 上辺の2点が先頭の２要素
@@ -40,11 +40,7 @@ class Card: NSObject {
         points.append(contentsOf: uppers.enumerated().filter({$0.offset < 2}).map{ $0.element }.sorted(by: {$0.x < $1.x}))
         points.append(contentsOf: unders.enumerated().filter({$0.offset < 2}).map{ $0.element }.sorted(by: {$0.x < $1.x}))
         
-        // 縮尺に合わせる
-        
-        print("raito=\(raito)")
-        print(rect)
-        rect = CGRect(x: rect.origin.x * raito, y: rect.origin.y * raito, width: rect.width * raito, height: rect.height * raito)
-        print(rect)
+        // 縮尺に合わせたCGRectを生成する
+        scaleRect = CGRect(x: orgRect.origin.x * raito, y: orgRect.origin.y * raito, width: orgRect.width * raito, height: orgRect.height * raito)
     }
 }

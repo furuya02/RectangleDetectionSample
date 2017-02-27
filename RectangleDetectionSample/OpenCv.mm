@@ -173,17 +173,46 @@ std::vector<std::vector<cv::Point> > contours;
             }
         }
     }
-    std::cout << "■num of contours = " << contours.size() << std::endl;
+//    std::cout << "■num of contours = " << contours.size() << std::endl;
     
     /// 輪郭の描画  画像，輪郭，描画輪郭指定インデックス，色，太さ，種類，階層構造，描画輪郭の最大レベル
     int max_level = 0;
     for(int i = 0; i < contours.size() ; i++){
         // 白黒では見えないので、matだけ
-        cv::drawContours(mat, contours, i, cv::Scalar(255, 0, 0, 255), 1, CV_AA, hierarchy, max_level);
+        //cv::drawContours(mat, contours, i, cv::Scalar(255, 0, 0, 255), 1, CV_AA, hierarchy, max_level);
     }
     // どちらをモニターするかで変更する
     return MatToUIImage(mat);
     //return MatToUIImage(gray);
+}
+
+-(UIImage *)AfineTransform:(UIImage *)image :(CGPoint *)src {
+
+    cv::Mat mat;
+    UIImageToMat(image, mat);
+    
+    cv::Point2f srcTri[4], dstTri[4];
+    srcTri[0].x = src[0].x;
+    srcTri[0].y = src[0].y;
+    dstTri[0].x = 0;
+    dstTri[0].y = 0;
+    srcTri[1].x = src[1].x;
+    srcTri[1].y = src[1].y;
+    dstTri[1].x = 0;
+    dstTri[1].y = mat.rows;
+    srcTri[2].x = src[2].x;
+    srcTri[2].y = src[2].y;
+    dstTri[2].x = mat.cols;
+    dstTri[2].y = mat.rows;
+    srcTri[3].x = src[3].x;
+    srcTri[3].y = src[3].y;
+    dstTri[3].x = mat.cols;
+    dstTri[3].y = 0;
+    
+    cv::Mat perspective_matrix = cv::getPerspectiveTransform(srcTri, dstTri);
+    cv::warpPerspective(mat, mat, perspective_matrix, mat.size(), cv::INTER_LINEAR);
+    
+    return MatToUIImage(mat);
 }
 
 

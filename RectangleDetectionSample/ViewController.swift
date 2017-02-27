@@ -16,6 +16,8 @@ class ViewController: UIViewController, AVCaptureDelegate {
     var cards :[Card] = []
     var guideViews:[UIView] = []
     
+    var isPreviewing = false
+    
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +44,7 @@ class ViewController: UIViewController, AVCaptureDelegate {
             let card = Card(p1: points[0] as! CGPoint ,p2: points[1] as! CGPoint, p3: points[2] as! CGPoint, p4: points[3] as! CGPoint, raito: raito)
             cards.append(card)
         }
-        print("cards.count = \(cards.count)")
+        //print("cards.count = \(cards.count)")
     }
 
     func capture(image: UIImage) {
@@ -51,9 +53,9 @@ class ViewController: UIViewController, AVCaptureDelegate {
 
         
         // 縦横比から、縦横のどちらが基準になっているかを確認する
-        print("image width=\(imageView.image?.size.width) height=\(imageView.image?.size.height)")
+        //print("image width=\(imageView.image?.size.width) height=\(imageView.image?.size.height)")
         let ratioImage = (imageView.image?.size.height)! / (imageView.image?.size.width)!
-        print("imageView.width=\(imageView.bounds.size.width) height=\(imageView.bounds.size.height)")
+        //print("imageView.width=\(imageView.bounds.size.width) height=\(imageView.bounds.size.height)")
         let viewRaito = (imageView.bounds.size.height) / (imageView.bounds.size.width)
         
         
@@ -72,12 +74,8 @@ class ViewController: UIViewController, AVCaptureDelegate {
         }
         
         reinitializeCard(raito: raito)
-        if cards.count > 0 {
-            // 縮小イメージ
-//            let srcImageRef = img?.cgImage
-//            var imageRef = srcImageRef?.cropping(to: cards[0].rect)
-//            let trimmedImage = UIImage(cgImage: imageRef!)
-//            imageView.image = trimmedImage
+        
+        if cards.count > 0 && !isPreviewing {
 
             // ガイドビュー
             for guideView in guideViews {
@@ -85,9 +83,9 @@ class ViewController: UIViewController, AVCaptureDelegate {
             }
             for (i,card) in cards.enumerated() {
                 guideViews[i].isHidden = false
-                let r = card.rect
+                let r = card.scaleRect
                 guideViews[i].frame = CGRect(x: (r?.origin.x)! - offsetX, y: (r?.origin.y)! - offsetY , width: (r?.size.width)!, height: (r?.size.height)!)
-                print("y=\((r?.origin.y)!) OffsetY=\(offsetY)")
+                //print("y=\((r?.origin.y)!) OffsetY=\(offsetY)")
             }
         } else {
             for guideView in guideViews {
@@ -96,16 +94,22 @@ class ViewController: UIViewController, AVCaptureDelegate {
         }
     }
     
-    var sw = false
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        sw = true
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let previewViewController: PreviewViewController = segue.destination as! PreviewViewController{
+            previewViewController.orgImage = imageView.image
+            previewViewController.cards = cards
+        }
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        sw = false
+    @IBAction func tapButton(_ sender: Any) {
+        isPreviewing = true
+        performSegue(withIdentifier: "gotoPreviewView", sender: nil)
     }
 
+    @IBAction func returnPreview(segue: UIStoryboardSegue) {
+        isPreviewing = false
+    }
+    
     @IBAction func tapShutterButton(_ sender: Any) {
         
 //        isChecking = true

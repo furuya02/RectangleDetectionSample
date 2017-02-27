@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,29 +21,84 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Rk-4G-GdP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="593"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MG7-K2-XsT">
-                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <rect key="frame" x="164" y="605" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="tapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qx6-h5-yTa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0Rk-4G-GdP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="EL1-a0-M1b"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0Rk-4G-GdP" secondAttribute="bottom" constant="74" id="Xdd-cW-tlh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0Rk-4G-GdP" secondAttribute="bottom" constant="100" id="Xdd-cW-tlh"/>
                             <constraint firstItem="0Rk-4G-GdP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fsx-NB-RPt"/>
                             <constraint firstAttribute="trailing" secondItem="0Rk-4G-GdP" secondAttribute="trailing" id="sDv-8Q-H6w"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="0Rk-4G-GdP" id="CC6-yK-mBL"/>
+                        <segue destination="C5S-4E-8gN" kind="presentation" identifier="gotoPreviewView" modalPresentationStyle="overCurrentContext" id="t8b-IG-Bhc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="138.98050974512745"/>
         </scene>
+        <!--Preview View Controller-->
+        <scene sceneID="4Ti-cL-s5V">
+            <objects>
+                <viewController id="C5S-4E-8gN" customClass="PreviewViewController" customModule="RectangleDetectionSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NyW-Yz-D1E"/>
+                        <viewControllerLayoutGuide type="bottom" id="swf-tk-uG6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wlx-Y0-kNy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLC-5f-lTA">
+                                <rect key="frame" x="315" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="bBo-mi-vzs"/>
+                                    <constraint firstAttribute="height" constant="40" id="bVF-Vd-sjD"/>
+                                </constraints>
+                                <state key="normal" image="close_thin"/>
+                                <connections>
+                                    <segue destination="pZ0-qS-z7a" kind="unwind" unwindAction="returnPreviewWithSegue:" id="Dgn-Xa-fgW"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4hQ-y5-GCj">
+                                <rect key="frame" x="0.0" y="217.5" width="375" height="232"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="232" id="W4E-2N-JNA"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4hQ-y5-GCj" firstAttribute="width" secondItem="Wlx-Y0-kNy" secondAttribute="width" id="BeU-NI-tKf"/>
+                            <constraint firstItem="4hQ-y5-GCj" firstAttribute="centerX" secondItem="Wlx-Y0-kNy" secondAttribute="centerX" id="FMW-AF-zCf"/>
+                            <constraint firstItem="OLC-5f-lTA" firstAttribute="top" secondItem="NyW-Yz-D1E" secondAttribute="bottom" id="THa-6e-Lv6"/>
+                            <constraint firstAttribute="trailing" secondItem="OLC-5f-lTA" secondAttribute="trailing" constant="20" id="X5M-Vo-khr"/>
+                            <constraint firstItem="4hQ-y5-GCj" firstAttribute="centerY" secondItem="Wlx-Y0-kNy" secondAttribute="centerY" id="fpJ-D8-7rB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="4hQ-y5-GCj" id="Uwk-v7-cRK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0oS-8T-LkT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pZ0-qS-z7a" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="936.79999999999995" y="138.98050974512745"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="close_thin" width="111" height="111"/>
+    </resources>
 </document>

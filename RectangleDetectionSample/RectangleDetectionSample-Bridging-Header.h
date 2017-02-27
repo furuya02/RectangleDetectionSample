@@ -7,12 +7,15 @@
 
 @interface OpenCv : NSObject
 
-- (UIImage *)MyFunction:(UIImage *)image;
-- (UIImage *)CreateImage:(UIImage *)image;
-- (UIImage *)SearchLine:(UIImage *)image;
+//- (UIImage *)MyFunction:(UIImage *)image;
+//- (UIImage *)CreateImage:(UIImage *)image;
 
--(int)Width:(UIImage *)image;
--(int)Height:(UIImage *)image;
+- (UIImage *)SearchLine:(UIImage *)image;
+- (UIImage *)AfineTransform:(UIImage *)image :(CGPoint *)src;
+
+
+//-(int)Width:(UIImage *)image;
+//-(int)Height:(UIImage *)image;
 
 @property (nonatomic, strong, getter = getRects) NSArray *rects;
 

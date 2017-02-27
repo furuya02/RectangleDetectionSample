@@ -101,6 +101,22 @@
     return CGRectMake(x, y, width, height);
 }
 
+std::vector<std::vector<cv::Point> > contours;
+
+- (NSArray *)getRects
+{
+    NSMutableArray *rects = [NSMutableArray new];
+    for( int i = 0; i< contours.size(); i++ ) {
+        NSMutableArray *points = [NSMutableArray new];
+        [points addObject:[NSValue valueWithCGPoint:CGPointMake(contours[i][0].x, contours[i][0].y)]];
+        [points addObject:[NSValue valueWithCGPoint:CGPointMake(contours[i][1].x, contours[i][1].y)]];
+        [points addObject:[NSValue valueWithCGPoint:CGPointMake(contours[i][2].x, contours[i][2].y)]];
+        [points addObject:[NSValue valueWithCGPoint:CGPointMake(contours[i][3].x, contours[i][3].y)]];
+
+        [rects addObject:points];
+    }
+    return rects;
+}
 
 -(UIImage *)SearchLine:(UIImage *)image {
     
@@ -120,11 +136,11 @@
     cv::threshold(gray,gray, 0, 255, cv::THRESH_BINARY|cv::THRESH_OTSU);
     
     // 2値画像，輪郭（出力），階層構造（出力），輪郭抽出モード，輪郭の近似手法
-    std::vector<std::vector<cv::Point> > contours;
+    std::vector<std::vector<cv::Point> > tmpContours;
     std::vector<cv::Vec4i> hierarchy;
     // どちらでも、あまり変わりない
     //cv::findContours(gray, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_TC89_KCOS);
-    cv::findContours(gray, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_TC89_L1);
+    cv::findContours(gray, tmpContours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_TC89_L1);
     //    mode –
     //    輪郭抽出モード
     //    RETR_EXTERNAL 最も外側の輪郭のみを抽出します．すべての輪郭に対して hierarchy[i][2]=hierarchy[i][3]=-1 がセットされます
@@ -137,73 +153,28 @@
     //    CV_CHAIN_APPROX_SIMPLE 水平・垂直・斜めの線分を圧縮し，それらの端点のみを残します．例えば，まっすぐな矩形の輪郭線は，4つの点にエンコードされます
     //    CV_CHAIN_APPROX_TC89_L1,CV_CHAIN_APPROX_TC89_KCOS Teh-Chinチェーン近似アルゴリズムの1つを適用します． TehChin89 を参照してください
     
-    // ある程度の面積が有るものだけに絞る
-    std::vector<std::vector<cv::Point> > contours2;
-    for( int i = 0; i< contours.size(); i++ ) // iterate through each contour.
+    contours.clear();
+    for( int i = 0; i< tmpContours.size(); i++ ) // iterate through each contour.
     {
-        double a = contourArea( contours[i],false);  //  Find the area of contour
+        // ある程度の面積が有るものだけに絞る
+        double a = contourArea( tmpContours[i],false);  //  Find the area of contour
         if( a > 15000) {
-            std::cout << "area=" << a << contours.size() << std::endl;
-            contours2.push_back(contours[i]);
+            //輪郭を直線近似する
+            std::vector< cv::Point > approx;
+            cv::approxPolyDP(cv::Mat(tmpContours[i]), approx, 0.01 * cv::arcLength(tmpContours[i], true), true);
+            // 矩形のみ取得
+            if (approx.size() == 4) {
+                contours.push_back(approx);
+            }
         }
     }
-    contours = contours2;
-
     std::cout << "■num of contours = " << contours.size() << std::endl;
-    for(int i = 0; i < contours.size() ; i++){
-        std::cout << "points = " << contours[i].size() <<  std::endl;
-    }
-    std::cout << "■================" << contours.size() << std::endl;
     
-    // 近似矩形に変換する
-    std::vector<std::vector<cv::Point> > contours3;
-    for(int i = 0; i < contours.size() ; i++){
-        
-        //輪郭を直線近似する
-        std::vector< cv::Point > approx;
-        cv::approxPolyDP(cv::Mat(contours[i]), approx, 0.01 * cv::arcLength(contours[i], true), true);
-        // 矩形のみ取得
-        if (approx.size() == 4) {
-//            // 台形の検出(あまり有効ではなかった)
-//            NSMutableArray *points = [NSMutableArray new];
-//            [points addObject:[NSValue valueWithCGPoint:CGPointMake(approx[0].x, approx[0].y)]];
-//            [points addObject:[NSValue valueWithCGPoint:CGPointMake(approx[1].x, approx[1].y)]];
-//            [points addObject:[NSValue valueWithCGPoint:CGPointMake(approx[2].x, approx[2].y)]];
-//            [points addObject:[NSValue valueWithCGPoint:CGPointMake(approx[3].x, approx[3].y)]];
-//            if([self DetectionTrapezoid:points]) {
-//                contours3.push_back(approx);
-//            }
-            contours3.push_back(approx);
-        }
-    }
-    contours = contours3;
-    std::cout << "■矩形検出 = " << contours.size() << std::endl;
-    for(int i = 0; i < contours.size() ; i++){
-        std::cout << "points = " << contours[i].size() <<  std::endl;
-    }
-    std::cout << "■================" << contours.size() << std::endl;
-    
-    
-    
-    //
-    /// 輪郭の描画
-    // 画像，輪郭，描画輪郭指定インデックス，色，太さ，種類，階層構造，描画輪郭の最大レベル
+    /// 輪郭の描画  画像，輪郭，描画輪郭指定インデックス，色，太さ，種類，階層構造，描画輪郭の最大レベル
     int max_level = 0;
     for(int i = 0; i < contours.size() ; i++){
-        
-        //輪郭を直線近似する
-        std::vector< cv::Point > approx;
-        cv::approxPolyDP(cv::Mat(contours[i]), approx, 0.01 * cv::arcLength(contours[i], true), true);
-        
-        cv::drawContours(mat, contours, i, cv::Scalar(255, 0, 0, 255), 5, CV_AA, hierarchy, max_level);
+        cv::drawContours(mat, contours, i, cv::Scalar(255, 0, 0, 255), 1, CV_AA, hierarchy, max_level);
     }
-    
-    if(contours.size()>0) {
-        _rect = [self getRect:contours[0]];
-    } else {
-        _rect = CGRectZero;
-    }
-
     return MatToUIImage(mat);
 }
 

@@ -16,6 +16,7 @@
 		D726C1D51E5AC7260063D81E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D726C1D31E5AC7260063D81E /* LaunchScreen.storyboard */; };
 		D726C1DD1E5AC85D0063D81E /* AvCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726C1DC1E5AC85D0063D81E /* AvCapture.swift */; };
 		D726C1E01E5AC8B10063D81E /* OpenCv.mm in Sources */ = {isa = PBXBuildFile; fileRef = D726C1DF1E5AC8B10063D81E /* OpenCv.mm */; };
+		D76C1D641E62B470000DC913 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C1D631E62B470000DC913 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D726C1DC1E5AC85D0063D81E /* AvCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvCapture.swift; sourceTree = "<group>"; };
 		D726C1DE1E5AC8B10063D81E /* RectangleDetectionSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RectangleDetectionSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		D726C1DF1E5AC8B10063D81E /* OpenCv.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCv.mm; sourceTree = "<group>"; };
+		D76C1D631E62B470000DC913 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E0A896AC6F5F610F0AAE1231 /* Pods_RectangleDetectionSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RectangleDetectionSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 				D726C1D61E5AC7260063D81E /* Info.plist */,
 				D726C1DF1E5AC8B10063D81E /* OpenCv.mm */,
 				D726C1DE1E5AC8B10063D81E /* RectangleDetectionSample-Bridging-Header.h */,
+				D76C1D631E62B470000DC913 /* Card.swift */,
 			);
 			path = RectangleDetectionSample;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			files = (
 				D726C1CD1E5AC7260063D81E /* ViewController.swift in Sources */,
 				D726C1DD1E5AC85D0063D81E /* AvCapture.swift in Sources */,
+				D76C1D641E62B470000DC913 /* Card.swift in Sources */,
 				D726C1E01E5AC8B10063D81E /* OpenCv.mm in Sources */,
 				D726C1CB1E5AC7260063D81E /* AppDelegate.swift in Sources */,
 			);

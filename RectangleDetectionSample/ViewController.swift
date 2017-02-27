@@ -13,33 +13,69 @@ class ViewController: UIViewController, AVCaptureDelegate {
     var openCv = OpenCv()
     var avCapture = AVCapture()
     
+    var cards :[Card] = []
+    var guideViews:[UIView] = []
+    
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for n in 0 ..< 4 {
+            let view = UIView()
+            view.layer.borderColor = UIColor.cyan.cgColor
+            view.layer.borderWidth = 1
+            view.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0)
+            view.isHidden = true
+            imageView.addSubview(view)
+            guideViews.append(view)
+        }
         
         avCapture.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    // [Card]の初期化
+    func reinitializeCard() {
+        cards = []
+        for rect in openCv.rects {
+            let points = rect as! NSArray
+            let card = Card(p1: points[0] as! CGPoint ,p2: points[1] as! CGPoint, p3: points[2] as! CGPoint, p4: points[3] as! CGPoint)
+            cards.append(card)
+        }
+        print("cards.count = \(cards.count)")
+    }
+
     func capture(image: UIImage) {
         let img = openCv.searchLine(image)
-        if sw && openCv.rect != CGRect.zero {
-            
-            print("OpenCV.Rect=(openCv.rect)")
+        imageView.image = img! as UIImage;
 
-            let imageW = img?.size.width;
-            let imageH = img?.size.height;
+        reinitializeCard()
+        if cards.count > 0 {
+            // 縮小イメージ
+//            let srcImageRef = img?.cgImage
+//            var imageRef = srcImageRef?.cropping(to: cards[0].rect)
+//            let trimmedImage = UIImage(cgImage: imageRef!)
+//            imageView.image = trimmedImage
             
-            //CGImageRef
-            print(openCv.rect)
-            let srcImageRef = img?.cgImage
-            var imageRef = srcImageRef?.cropping(to: openCv.rect)
-            let trimmedImage = UIImage(cgImage: imageRef!)
-            imageView.image = trimmedImage
-            
-            
+            let offsetX = (imageView.image?.size.width)! - imageView.bounds.width
+            let offsetY = (imageView.image?.size.height)! - imageView.bounds.height
+            print("X=\(offsetX) Y=\(offsetY)")
+            print("\(cards[0].points[0].x),\(cards[0].points[0].y) - \(cards[0].points[3].x),\(cards[0].points[3].y)")
+
+            // ガイドビュー
+            for guideView in guideViews {
+                guideView.isHidden = true
+            }
+            for (i,card) in cards.enumerated() {
+                guideViews[i].isHidden = false
+                
+                let r = card.rect
+                guideViews[i].frame = CGRect(x: (r?.origin.x)! - offsetX/2, y: (r?.origin.y)! - offsetY/2, width: (r?.size.width)!, height: (r?.size.height)!)
+            }
         } else {
-            imageView.image = img! as UIImage;
+            for guideView in guideViews {
+                guideView.isHidden = true
+            }
         }
     }
     

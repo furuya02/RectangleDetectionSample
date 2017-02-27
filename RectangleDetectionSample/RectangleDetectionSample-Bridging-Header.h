@@ -14,6 +14,6 @@
 -(int)Width:(UIImage *)image;
 -(int)Height:(UIImage *)image;
 
-@property CGRect rect;
+@property (nonatomic, strong, getter = getRects) NSArray *rects;
 
 @end

@@ -15,7 +15,6 @@ class PreviewViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     var orgImage: UIImage!
     var cards: [Card] = []
-    var images: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +24,8 @@ class PreviewViewController: UIViewController,UITableViewDelegate,UITableViewDat
         tableView.dataSource = self
         tableView.delegate = self
 
+        let ocr = Ocr()
+        
         for card in cards {
             // イメージの一部の切り取り
             let srcImageRef = orgImage?.cgImage
@@ -38,14 +39,28 @@ class PreviewViewController: UIViewController,UITableViewDelegate,UITableViewDat
             src.append(CGPoint(x: card.points[1].x - card.orgRect.origin.x, y: card.points[1].y - card.orgRect.origin.y))
             
             if let image = openCv.afineTransform(trimmedImage,&src) {
-                images.append(image)
+                 card.image = image
+                 //UIImageWriteToSavedPhotosAlbum(image, self, nil, nil) カメラロール保存（デバッグ用）
+                try! ocr.recognizeCharacters(imageData: UIImagePNGRepresentation(image)!, language: "unk", detectOrientation: true, completion: { (response) in
+                    card.lines = response!
+                    print(card.lines)
+                    self.tableView.reloadData()
+                })
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let ocrViewController = segue.destination as? OcrViewController, let indexPath = sender as? IndexPath {
+            ocrViewController.card = cards[indexPath.row]
         }
     }
     
     // MARK: UITableViewDelegate
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         performSegue(withIdentifier: "gotoOcrView", sender: indexPath)
+    }
     
     // MARK: UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,13 +68,20 @@ class PreviewViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return images.count
+        return cards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        let card = cards[indexPath.row]
+        
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
-        imageView.image = images[indexPath.row]
+        imageView.image = card.image
+        if card.lines.count > 0 {
+            imageView.layer.borderColor = UIColor.blue.cgColor
+            imageView.layer.borderWidth = 3
+        }
         return cell
     }
     

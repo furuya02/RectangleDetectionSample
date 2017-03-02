@@ -42,7 +42,7 @@ class ViewController: UIViewController, AVCaptureDelegate {
         for rect in openCv.rects {
             let points = rect as! NSArray
             let card = Card(p1: points[0] as! CGPoint ,p2: points[1] as! CGPoint, p3: points[2] as! CGPoint, p4: points[3] as! CGPoint, raito: raito)
-            cards.append(card)
+            cards.insert(card, at: 0)
         }
         //print("cards.count = \(cards.count)")
     }

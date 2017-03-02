@@ -16,6 +16,8 @@
 		D726C1DD1E5AC85D0063D81E /* AvCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726C1DC1E5AC85D0063D81E /* AvCapture.swift */; };
 		D726C1E01E5AC8B10063D81E /* OpenCv.mm in Sources */ = {isa = PBXBuildFile; fileRef = D726C1DF1E5AC8B10063D81E /* OpenCv.mm */; };
 		D76C1D641E62B470000DC913 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C1D631E62B470000DC913 /* Card.swift */; };
+		D78CE3A91E676C29008B3E55 /* OcrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78CE3A81E676C29008B3E55 /* OcrViewController.swift */; };
+		D78CE3AB1E677126008B3E55 /* Ocr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78CE3AA1E677126008B3E55 /* Ocr.swift */; };
 		D7A139F91E64070900138BEF /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A139F81E64070900138BEF /* PreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		D726C1DE1E5AC8B10063D81E /* RectangleDetectionSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RectangleDetectionSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		D726C1DF1E5AC8B10063D81E /* OpenCv.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCv.mm; sourceTree = "<group>"; };
 		D76C1D631E62B470000DC913 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		D78CE3A81E676C29008B3E55 /* OcrViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OcrViewController.swift; sourceTree = "<group>"; };
+		D78CE3AA1E677126008B3E55 /* Ocr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ocr.swift; sourceTree = "<group>"; };
 		D7A139F81E64070900138BEF /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		E0A896AC6F5F610F0AAE1231 /* Pods_RectangleDetectionSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RectangleDetectionSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -98,6 +102,8 @@
 				D726C1DE1E5AC8B10063D81E /* RectangleDetectionSample-Bridging-Header.h */,
 				D76C1D631E62B470000DC913 /* Card.swift */,
 				D7A139F81E64070900138BEF /* PreviewViewController.swift */,
+				D78CE3A81E676C29008B3E55 /* OcrViewController.swift */,
+				D78CE3AA1E677126008B3E55 /* Ocr.swift */,
 			);
 			path = RectangleDetectionSample;
 			sourceTree = "<group>";
@@ -228,6 +234,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D726C1CD1E5AC7260063D81E /* ViewController.swift in Sources */,
+				D78CE3A91E676C29008B3E55 /* OcrViewController.swift in Sources */,
+				D78CE3AB1E677126008B3E55 /* Ocr.swift in Sources */,
 				D726C1DD1E5AC85D0063D81E /* AvCapture.swift in Sources */,
 				D76C1D641E62B470000DC913 /* Card.swift in Sources */,
 				D726C1E01E5AC8B10063D81E /* OpenCv.mm in Sources */,
@@ -298,7 +306,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -341,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

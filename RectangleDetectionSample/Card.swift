@@ -21,6 +21,9 @@ class Card: NSObject {
     //         +-------------+
     //      points[2]    points[3]
     
+    var image: UIImage!
+    
+    var lines: [String] = []
     
     init(p1: CGPoint, p2: CGPoint, p3: CGPoint, p4: CGPoint, raito: CGFloat){
         //points = [p1, p2, p3, p4].sorted { $0.x < $1.x }
